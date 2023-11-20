@@ -4,7 +4,11 @@ module.exports = {
       files: ["*.html", "./src/**/*.rs"],
     },
     theme: {
-      extend: {},
+      extend: {
+        aspectRatio: {
+          '7/4': '7 / 4',
+        }
+      },
     },
     plugins: [],
   }

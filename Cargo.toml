@@ -7,3 +7,8 @@ edition = "2021"
 
 [dependencies]
 leptos = { version = "0.5.2", features = ["csr", "nightly"] }
+leptos_icons = { version = "0.1.0", default_features = false, features = [
+    "AiGithubFilled",
+    "FaLinkedinBrands",
+    "FaEnvelopeRegular"
+]}
