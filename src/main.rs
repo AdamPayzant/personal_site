@@ -1,4 +1,8 @@
 use leptos::*;
+use leptos_icons::*;
+
+mod card_front;
+mod card_back;
 
 // Using https://dunks1980.com/ for inspiration
 // Have it like a card, and then "flip" to projects on the back
@@ -14,45 +18,39 @@ fn App() -> impl IntoView {
     }
 }
 
-
 // This is gross, I'd like a better way of doing this
+// TODO: Make the colors more distinct.
+//       Overall probably want to overhaul this as it's a bit jank
 const CARD_BORDER: &str = r#"
     border-radius: 8px;
     background: 
-        radial-gradient(circle at 100% 100%, #334454 0, #334454 3px, transparent 3px) 0% 0%/8px 8px no-repeat,
-        radial-gradient(circle at 0 100%, #334454 0, #334454 3px, transparent 3px) 100% 0%/8px 8px no-repeat,
-        radial-gradient(circle at 100% 0, #334454 0, #334454 3px, transparent 3px) 0% 100%/8px 8px no-repeat,
-        radial-gradient(circle at 0 0, #334454 0, #334454 3px, transparent 3px) 100% 100%/8px 8px no-repeat,
-        linear-gradient(#334454, #334454) 50% 50%/calc(100% - 10px) calc(100% - 16px) no-repeat,
-        linear-gradient(#334454, #334454) 50% 50%/calc(100% - 16px) calc(100% - 10px) no-repeat,
-        linear-gradient(147deg, transparent 25%, #581c87 25%, #9A2157 50%, transparent 50%, transparent 75%, #dc2626 75%);
+        radial-gradient(circle at 100% 100%, #002b36 0, #002b36 3px, transparent 3px) 0% 0%/8px 8px no-repeat,
+        radial-gradient(circle at 0 100%, #002b36 0, #002b36 3px, transparent 3px) 100% 0%/8px 8px no-repeat,
+        radial-gradient(circle at 100% 0, #002b36 0, #002b36 3px, transparent 3px) 0% 100%/8px 8px no-repeat,
+        radial-gradient(circle at 0 0, #002b36 0, #002b36 3px, transparent 3px) 100% 100%/8px 8px no-repeat,
+        linear-gradient(#002b36, #002b36) 50% 50%/calc(100% - 10px) calc(100% - 16px) no-repeat,
+        linear-gradient(#002b36, #002b36) 50% 50%/calc(100% - 16px) calc(100% - 10px) no-repeat,
+        linear-gradient(147deg, #581c87 15%, transparent 25%, transparent 75%, #dc2626 75%);
 "#;
 
 #[component]
 fn Card() -> impl IntoView {
     let flip_state = create_rw_signal(false);
     view! {
-        // <div class="flex aspect-7/4 max-w-screen-lg flex-col mx-auto rounded-lg
-        //             bg-gradient-to-br from-purple-900 to-red-600
-        //             text-white">
-        // </div>
-        <div class="flex aspect-7/4 max-w-screen-lg flex-col mx-auto text-white" style=CARD_BORDER>
-            <CardFront/>
+        <div class="pt-20">
+            <div class="relative aspect-7/4 max-w-screen-lg flex-col mx-auto text-[#fdf6e3]" style=CARD_BORDER>
+                <div class=move|| format!("absolute w-full h-full {}", if !flip_state.get() {"scale-100"} else {"scale-0"})>
+                    <card_front::CardFront/>
+                </div>
+                <div class=move|| format!("absolute w-full h-full {}", if flip_state.get() {"scale-100"} else {"scale-0"})>
+                    <card_back::CardBack/>
+                </div>
+                <a class="absolute bottom-4 right-5 text-center transition duration-100 hover:scale-125 cursor-pointer"
+                on:click=move |_| { flip_state.set(!flip_state.get()); }>
+                    // Todo: Actually animate transition
+                    <Icon icon=Icon::from(BsIcon::BsArrowRight) width="35px" height="35px" style="color: #fdf6e3;"/>
+                </a>
+            </div>
         </div>
     }
 }
-
-#[component]
-fn CardFront() -> impl IntoView {
-    view! {
-        Adam Payzant
-    }
-}
-
-#[component]
-fn CardBack() -> impl IntoView {
-    view! {
-
-    }
-}
-
