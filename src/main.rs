@@ -38,16 +38,21 @@ fn Card() -> impl IntoView {
     let flip_state = create_rw_signal(false);
     view! {
         <div class="pt-20">
-            <div class="relative aspect-7/4 max-w-screen-lg flex-col mx-auto text-[#fdf6e3]" style=CARD_BORDER>
-                <div class=move|| format!("absolute w-full h-full {}", if !flip_state.get() {"scale-100"} else {"scale-0"})>
+            <div class=move || { 
+                    format!("relative aspect-7/4 max-w-screen-lg flex-col mx-auto text-[#fdf6e3] 
+                             perspective transform duration-1000 origin-center page {}", 
+                             if !flip_state.get() {""} else {"flip"}) 
+                }
+                style=CARD_BORDER
+            >
+                <div class="absolute w-full h-full front">
                     <card_front::CardFront/>
                 </div>
-                <div class=move|| format!("absolute w-full h-full {}", if flip_state.get() {"scale-100"} else {"scale-0"})>
+                <div class="absolute w-full h-full back">
                     <card_back::CardBack/>
                 </div>
                 <a class="absolute bottom-4 right-5 text-center transition duration-100 hover:scale-125 cursor-pointer"
                 on:click=move |_| { flip_state.set(!flip_state.get()); }>
-                    // Todo: Actually animate transition
                     <Icon icon=Icon::from(BsIcon::BsArrowRight) width="35px" height="35px" style="color: #fdf6e3;"/>
                 </a>
             </div>

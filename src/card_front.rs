@@ -14,13 +14,13 @@ pub fn CardFront() -> impl IntoView {
 #[component]
 fn FrontLeft() -> impl IntoView {
     view! {
-        <div class="text-center w-[60%] pt-10 pb-10  h-full">
+        <div class=" w-[60%] pt-10 pb-10  h-full">
             <div class="border-r-2 h-full border-slate-500">
-                <p class="pt-20 pr-7 pl-7">
+                <p class="pt-20 pr-9 pl-16">
                     <h1 class="text-4xl font-bold">
                         "Hi, I'm Adam!"
                     </h1>
-                    <p class="pt-20">
+                    <p class="pt-12">
                         "My name is Adam Payzant, a software developer based in Ottawa, Ontario.
                          I have a Bachelor's of Computer Science. I'm very passionate about learning
                          new technologies, as well as expanding my understanding of existing tech. "

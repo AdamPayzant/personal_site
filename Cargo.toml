@@ -14,5 +14,6 @@ leptos_icons = { version = "0.1.0", default_features = false, features = [
     "BsArrowRight",
     "FaLocationDotSolid",
     "FaFileRegular",
-    "FaCalendarDaysRegular"
+    "FaCalendarDaysRegular",
+    "BiXRegular",
 ]}

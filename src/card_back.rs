@@ -18,7 +18,7 @@ const PROJECTS: [Project; 3] = [
         name: "Operating System",
         link: "https://github.com/AdamPayzant/rtos_project",
         completed: false,
-        description: "A simple microkernel with plans to add real time guarantees written in Zig.
+        description: "A simple RISC-V microkernel with plans to add real time guarantees written in Zig.
                       This was inspired because I felt that OS development was a major gap in
                       my knowledge, as I knew high level OS concepts from userspace as well as some
                       embedded knowledge, but lacked the knowledge with concepts like scheduling,
@@ -50,8 +50,7 @@ const PROJECTS: [Project; 3] = [
                       personal site, and still feel that Leptos was massively
                       overkill for what I was wanting from a website. However, I chose Leptos
                       as it provided a great learning oppurtunity both for getting back
-                      into web frameworks after a few years hiatus as well as seeing what
-                      modern WASM can do.",
+                      into web frameworks as well as seeing what modern WASM can do.",
     },
 ];
 
@@ -64,7 +63,6 @@ pub fn CardBack() -> impl IntoView {
         view! {
             <div class="cursor-pointer py-1 transition duration-100 hover:scale-105 origin-center" on:click=move |_| {
                 active_project.set(Some(p.index));
-                logging::log!("Active index: {}", active_project.get().unwrap());
             }>
                 {p.name}
             </div>
@@ -72,9 +70,9 @@ pub fn CardBack() -> impl IntoView {
     }).collect_view();
     let project_details = PROJECTS.into_iter().map(|p| {
         view! {
-            <div class=move || format!("absolute top-15% m-8 h-full text-center transition origin-center scale-{}", match active_project.get() {
-                Some(id) => if p.index == id {100} else {0},
-                None => 0,
+            <div class=move || format!("absolute top-15% m-16 h-full text-center transition origin-center {}", match active_project.get() {
+                Some(id) => if p.index == id {"scale-100"} else {"scale-0"},
+                None => {"scale-0"},
             })>
                 <ProjectEntry project=p />
             </div>
@@ -83,15 +81,23 @@ pub fn CardBack() -> impl IntoView {
 
     view! {
         <div class="flex flex-row h-full">
-            <div class="w-[40%] pt-10 pl-6  h-full">
+            <div class="w-[40%] pt-16 pl-16 pb-16 h-full">
                 <h1 class="text-2xl">
                     Projects:
                 </h1>
-                <ul class="flex flex-col h-full m-2 overflow-hidden overflow-y-scroll font-bold text-lg pl-4">
+                <ul class="flex flex-col h-full m-2 overflow-hidden overflow-y-scroll font-bold text-lg pl-4 no-scrollbar">
                     {project_list}
                 </ul>
             </div>
             <div class="w-full h-full">
+                // Exit button
+                <div class=move || format!("absolute pt-5 right-5 transition {}",
+                    if active_project.get().is_some() {"cursor-pointer opacity-100"} else {"opacity-0"}
+                )>
+                    <div class="transition duration-100 hover:scale-125" on:click=move |_| {active_project.set(None)}>
+                        <Icon icon=Icon::from(BiIcon::BiXRegular) width="35px" height="35px" style="color: fdf6e3;" />
+                    </div>
+                </div>
                 {project_details}
             </div>
         </div>
