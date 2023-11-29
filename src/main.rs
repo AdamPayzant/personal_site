@@ -18,9 +18,6 @@ fn App() -> impl IntoView {
     }
 }
 
-// This is gross, I'd like a better way of doing this
-// TODO: Make the colors more distinct.
-//       Overall probably want to overhaul this as it's a bit jank
 const CARD_BORDER: &str = r#"
     border-radius: 8px;
     background: 
@@ -30,7 +27,7 @@ const CARD_BORDER: &str = r#"
         radial-gradient(circle at 0 0, #002b36 0, #002b36 3px, transparent 3px) 100% 100%/8px 8px no-repeat,
         linear-gradient(#002b36, #002b36) 50% 50%/calc(100% - 10px) calc(100% - 16px) no-repeat,
         linear-gradient(#002b36, #002b36) 50% 50%/calc(100% - 16px) calc(100% - 10px) no-repeat,
-        linear-gradient(147deg, #581c87 15%, transparent 25%, transparent 75%, #dc2626 75%);
+        linear-gradient(147deg, #581c87 25%, transparent 35%, transparent 65%, #dc2626 95%);
 "#;
 
 #[component]

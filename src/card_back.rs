@@ -20,10 +20,10 @@ const PROJECTS: [Project; 3] = [
         completed: false,
         description: "A simple RISC-V microkernel with plans to add real time guarantees written in Zig.
                       This was inspired because I felt that OS development was a major gap in
-                      my knowledge, as I knew high level OS concepts from userspace as well as some
+                      my knowledge, as I knew high-level OS concepts from userspace as well as some
                       embedded knowledge, but lacked the knowledge with concepts like scheduling,
                       virtual memory, processes, and syscalls on an implementation level.
-                      Currently the project is restricted to booting in QEMU, a UART driver, and an
+                      Currently, the project is restricted to booting in QEMU, a UART driver, and an
                       interrupt/syscall system, with plans to implement virtual memory and process handling.",
     },
     Project {
@@ -31,12 +31,12 @@ const PROJECTS: [Project; 3] = [
         name: "doit.rs",
         link: "https://github.com/AdamPayzant/doit_rs",
         completed: true,
-        description: "A privledge escalation tool for Linux written akin to sudo
+        description: "A privilege escalation tool for Linux written akin to sudo
                       or doas. I was inspired to work on it after reading about CVE-2021-3156 Baron
                       Samedit vulnerability in sudo as well as the simplicity of opendoas.
-                      Obviously this program is not exceedingly well audited and as such should
-                      not be trusted for practical use, but it was an excellant learning oppurtunity
-                      both for privledge escalation, general Rust programming, and FFI code to
+                      Obviously, this program is not well audited and as such should
+                      not be trusted for practical use, but it was an excellent learning opportunity
+                      both for privilege escalation, general Rust programming, and FFI code to
                       interface with Shadow and PAM for authentication.",
     },
     Project {
