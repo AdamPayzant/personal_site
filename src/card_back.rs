@@ -1,7 +1,6 @@
 use leptos::*;
 use leptos_icons::*;
 
-
 // Types and constants
 #[derive(Clone, Copy)]
 struct Project {
@@ -12,9 +11,19 @@ struct Project {
     description: &'static str,
 }
 
-const PROJECTS: [Project; 3] = [
+const PROJECTS: [Project; 4] = [
     Project {
         index: 0,
+        name: "TTHelper",
+        link: "https://github.com/AdamPayzant/tthelper",
+        completed: false,
+        description: "A tabletop game management system to simplify tracking my character data and notes.
+                      Currently in early stages of development, this features a distinct data server and client,
+                      with the data server written in Rust and a PostgreSQL database and the client developed using
+                      Typescript Svelte."
+    },
+    Project {
+        index: 1,
         name: "Operating System",
         link: "https://github.com/AdamPayzant/rtos_project",
         completed: false,
@@ -23,11 +32,12 @@ const PROJECTS: [Project; 3] = [
                       my knowledge, as I knew high-level OS concepts from userspace as well as some
                       embedded knowledge, but lacked the knowledge with concepts like scheduling,
                       virtual memory, processes, and syscalls on an implementation level.
-                      Currently, the project is restricted to booting in QEMU, a UART driver, and an
-                      interrupt/syscall system, with plans to implement virtual memory and process handling.",
+                      The project is restricted to booting in QEMU, a UART driver, and an
+                      interrupt/syscall system, with plans to implement virtual memory and process handling.
+                      Currently on hold until I figure the cause for crashes while writing to SATP register",
     },
     Project {
-        index: 1,
+        index: 2,
         name: "doit.rs",
         link: "https://github.com/AdamPayzant/doit_rs",
         completed: true,
@@ -40,7 +50,7 @@ const PROJECTS: [Project; 3] = [
                       interface with Shadow and PAM for authentication.",
     },
     Project {
-        index: 2,
+        index: 3,
         name: "Personal Site",
         link: "https://github.com/AdamPayzant/personal_site",
         completed: true,
@@ -53,7 +63,6 @@ const PROJECTS: [Project; 3] = [
                       into web frameworks as well as seeing what modern WASM can do.",
     },
 ];
-
 
 // Components
 #[component]

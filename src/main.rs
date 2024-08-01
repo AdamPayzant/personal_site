@@ -1,8 +1,8 @@
 use leptos::*;
 use leptos_icons::*;
 
-mod card_front;
 mod card_back;
+mod card_front;
 
 // Using https://dunks1980.com/ for inspiration
 // Have it like a card, and then "flip" to projects on the back
@@ -35,10 +35,10 @@ fn Card() -> impl IntoView {
     let flip_state = create_rw_signal(false);
     view! {
         <div class="pt-20">
-            <div class=move || { 
-                    format!("relative aspect-7/4 max-w-screen-lg flex-col mx-auto text-[#fdf6e3] 
-                             perspective transform duration-1000 origin-center page {}", 
-                             if !flip_state.get() {""} else {"flip"}) 
+            <div class=move || {
+                    format!("relative aspect-7/4 max-w-screen-lg flex-col mx-auto text-[#fdf6e3]
+                             perspective transform duration-1000 origin-center page {}",
+                             if !flip_state.get() {""} else {"flip"})
                 }
                 style=CARD_BORDER
             >
