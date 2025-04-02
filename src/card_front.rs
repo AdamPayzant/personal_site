@@ -1,5 +1,7 @@
-use leptos::*;
+// use leptos::*;
+use leptos::prelude::*;
 use leptos_icons::*;
+use icondata as i;
 
 #[component]
 pub fn CardFront() -> impl IntoView {
@@ -14,7 +16,7 @@ pub fn CardFront() -> impl IntoView {
 #[component]
 fn FrontLeft() -> impl IntoView {
     view! {
-        <div class=" w-[60%] pt-10 pb-10  h-full">
+        <div class=" w-[60%] pt-10 pb-10 pl-4  h-full">
             <div class="border-r-2 h-full border-slate-500">
                 <p class="pt-20 pr-9 pl-16">
                     <h1 class="text-4xl font-bold">
@@ -22,8 +24,10 @@ fn FrontLeft() -> impl IntoView {
                     </h1>
                     <p class="pt-12">
                         "My name is Adam Payzant, a software developer based in Ottawa, Ontario.
-                         I have a Bachelor's of Computer Science. I'm very passionate about learning
-                         new technologies, as well as expanding my understanding of existing tech. "
+                         I have a Bachelor's of Computer Science. I have been a software developer
+                         at Cisco for 4 years, and in that time I have resolved numerous bugs,
+                         implemented many customer visible enhancements, and overhauled
+                         my teams testing solutions."
                     </p>
                     <p class="pt-10">
                         "My focus has been on networking, low level programming, high performance computing,
@@ -43,10 +47,10 @@ fn FrontRight() -> impl IntoView {
         <div class="pt-10 pb-10">
             <div class="absolute top-5 right-5">
                 <div class="flex flex-row">
-                    <IconWithLink href="https://www.linkedin.com/in/adam-payzant/".to_string() icon=Icon::from(FaIcon::FaLinkedinBrands) />
-                    <IconWithLink href="https://github.com/AdamPayzant/".to_string() icon=Icon::from(AiIcon::AiGithubFilled) />
-                    <IconWithLink href="mailto:payzantedwardiv@gmail.com".to_string() icon=Icon::from(FaIcon::FaEnvelopeRegular) />
-                    <IconWithLink href="resume.pdf".to_string() icon=Icon::from(FaIcon::FaFileRegular) />
+                    <IconWithLink href="https://www.linkedin.com/in/adam-payzant/".to_string() icon={i::FaLinkedinBrands} />
+                    <IconWithLink href="https://github.com/AdamPayzant/".to_string() icon={i::AiGithubFilled} />
+                    <IconWithLink href="mailto:payzantedwardiv@gmail.com".to_string() icon={i::FaEnvelopeRegular} />
+                    <IconWithLink href="resume.pdf".to_string() icon={i::FaFileRegular} />
                 </div>
             </div>
             <div class="relative pt-10 left-4">
@@ -84,7 +88,7 @@ fn ExperienceHeader(title: String, who: String, start: String, end: String) -> i
         </h2>
         <p class="pl-3 flex">
             <div class="px-1">
-                <Icon icon=Icon::from(FaIcon::FaCalendarDaysRegular) width="20px" height="20px" style="color: fdf6e3;"/>
+                <Icon icon={i::FaCalendarDaysRegular} width="20px" height="20px" style="color: fdf6e3;"/>
             </div>
             {start} - {end}
         </p>
@@ -93,7 +97,7 @@ fn ExperienceHeader(title: String, who: String, start: String, end: String) -> i
 
 
 #[component]
-fn IconWithLink(href: String, #[prop(into)] icon: MaybeSignal<Icon>) -> impl IntoView {
+fn IconWithLink(href: String, #[prop(into)] icon: Signal<i::Icon>) -> impl IntoView {
     view! {
         <a href=href class="px-1.5 transition duration-100 hover:scale-125">
             <Icon icon=icon width="35px" height="35px" style="color: fdf6e3;"/>

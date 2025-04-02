@@ -1,5 +1,7 @@
-use leptos::*;
+// use leptos::*;
+use leptos::prelude::*;
 use leptos_icons::*;
+use icondata as i;
 
 mod card_back;
 mod card_front;
@@ -32,7 +34,7 @@ const CARD_BORDER: &str = r#"
 
 #[component]
 fn Card() -> impl IntoView {
-    let flip_state = create_rw_signal(false);
+    let flip_state = RwSignal::new(false);
     view! {
         <div class="pt-20">
             <div class=move || {
@@ -50,7 +52,7 @@ fn Card() -> impl IntoView {
                 </div>
                 <a class="absolute bottom-4 right-5 text-center transition duration-100 hover:scale-125 cursor-pointer"
                 on:click=move |_| { flip_state.set(!flip_state.get()); }>
-                    <Icon icon=Icon::from(BsIcon::BsArrowRight) width="35px" height="35px" style="color: #fdf6e3;"/>
+                    <Icon icon={i::BsArrowRight} width="35px" height="35px" style="color: #fdf6e3;"/>
                 </a>
             </div>
         </div>

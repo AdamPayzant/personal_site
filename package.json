@@ -1,0 +1,18 @@
+{
+  "name": "personal_site",
+  "version": "1.0.0",
+  "description": "My personal site. Developed using Leptos.",
+  "bugs": {
+    "url": "https://github.com/AdamPayzant/personal_site/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdamPayzant/personal_site.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "devDependencies": {
+    "tailwindcss": "^4.0.17",
+    "@tailwindcss/cli": "^4.0.17"
+  }
+}
